@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/*CARRUSEL*/
+.carousel-item img{
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px; 
+    height: 30px; 
+    background-size: 100%, 100%;
+    background-color:rgb(67, 67, 67);
+    border-radius: 100%;
+
+}
+
+.carousel-control-prev {
+    margin-left: -25px; 
+}
+
+.carousel-control-next {
+    margin-right: -25px; 
+}
+
+
+/*CARD'S Y RESTAURANTES*/
+.restaurantes_txt{
+    color:rgb(239,171,82) ;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 5rem;
+    font-weight: bold;
+    margin-left: 5rem;
+}
+
+.card{
+    background-color: #EFAB52 ;
+    border-radius: 20px;
+    height: 20rem;
+}
+.img{
+    background-color: #FFFFEE;
+    margin: 30px;
+    border-radius: 20px;
+}
+
+.card-title{
+    display: flex;    
+    justify-content: center;
+    color: #FFFFEE;
+    font-weight: bold;
+    font-size: 2.6rem;
+}
+.card-text{
+    display: flex;
+    justify-content:center;
+}
+.card-body{
+    padding-top: 0px;
+}
+
+.restaurantes{
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap; 
+}
+
+.restaurantes a{
+    text-decoration: none;
+}
+body{
+    margin:0px;
+}
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+.card .img img{
+    height: 10rem;
+    border-radius: 20px;
+}
+
+.comida h5{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+.comida hr{
+    color: #707070;
+}
+.comida p{
+    text-align: center;
+    color: #EFEFEF;
+}
+
+
+/*NUEVO CARRUSEL DE COMIDA*/
+
+.butt{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 25rem;
+    padding: 0;
+}
+
+.left button{
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;   
+    border: none;
+    background-color: #39383863;
+}
+.right button{
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;   
+    border: none;
+    background-color: #39383863;
+}
+
+.right img{
+    transform: scaleX(-1);
+}
+.platos{
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.food{
+    display: flex;
+    width: 1200px;
+    align-items: center;
+    
+
+}
+.food-container{
+    display: flex;
+    align-items: center;
+    width: 10rem;
+    height: 36rem;
+    justify-content: space-evenly;
+    
+}   
+.food a{
+    text-decoration: none;
+}
+.owl-carousel{
+    width: 100%;
+}
+.owl-stage-outer{
+    width: 100%;
+    height: 576px;
+}
+.owl-stage{
+    width: 100%;
+    height: 576px;
+}
+.owl-nav{
+    display: none;
+}
+.owl-dots{
+    display: none;
+}
+.owl-item{
+    margin-top: 280px;
+}

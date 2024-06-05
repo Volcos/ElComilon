@@ -1,0 +1,75 @@
+.pie{
+    display: flex;
+    width: 100%;
+    height: 300px;
+    background-color: #EFAB52;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.pie .itemf{
+    display: flex;
+}
+
+.itemf .it1{
+    display: flex;
+    justify-content: center;
+}
+.sobre{
+    display: flex;
+    flex-direction: column;
+    margin-top: 47px;
+}
+.sobre h1{
+    justify-content: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.ayuda{
+    display: flex;
+    flex-direction: column;
+}
+.ayuda h1{
+    justify-content: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.contacto{
+    display: flex;
+    flex-direction: column;
+}
+.contacto h1{
+    justify-content: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.contacto h1{
+    color: #EFEFEF;
+}
+.ig a{
+    color: #F5F5F5;
+}
+.mail a{
+    color: #F5F5F5;
+}
+.wsp a{
+    color: #F5F5F5;
+}
+
+.ayuda a{
+    color: #F5F5F5;
+    text-decoration: none;
+}
+
+.sobre h1{
+    color: #EFEFEF;
+}
+
+.sobre a{
+    color: #F5F5F5;
+    text-decoration: none;
+}
