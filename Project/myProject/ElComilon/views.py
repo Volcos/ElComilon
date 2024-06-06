@@ -3,9 +3,10 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    context = {
-        'name': 'Riqueleme',
-        'age': 23,
-        'nacionality':'Peru'
-    }
-    return render(request, 'pages/index.html', context)
+    return render(request, 'pages/index.html')
+
+def register(request):
+    return render(request, 'pages/Register.html')
+
+def login(request):
+    return render(request, 'pages/Login.html')

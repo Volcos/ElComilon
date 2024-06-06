@@ -11,7 +11,7 @@
         <div class="barra">
             <div class="item i1">
                 <div class="icono">
-                    <a href="/html/Menu.html">
+                    <a href="">
                         <img src="{% static 'img/letra-c.png' %}" alt="" width="50px">
                     </a>
                 </div>
@@ -25,10 +25,10 @@
             </div>
             <div class="item i3">
                 <div class="boton ingreso">
-                    <a href="/html/Login.html" >Ingreso</a>
+                    <a href="{% url 'Login' %}" >Ingreso</a>
                 </div>
                 <div class="boton registro">
-                    <a href="/html/Register.html">Registro</a>
+                    <a href="{% url 'Register' %}">Registro</a>
                 </div>
                 <div class="boton carrito perfil">
                     <button style="background-color: rgba(240, 248, 255, 0);border: 0;" onclick="popup()" type="button"><img src="{% static 'img/usuario (1).png' %}" alt="" width="25" style="margin-left: 4.5px;"></button>

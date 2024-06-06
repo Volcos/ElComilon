@@ -1,0 +1,66 @@
+.formulario {
+  padding: 15px 15px 15px 15px;
+  /* padding-left : Relleno desde la IZQ
+       padding-right : Relleno desde la DER
+        */
+}
+#nombre{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+
+#apellido{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#correoP{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#correoE{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#fecnac{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#genero{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#numtelef{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#comuna{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#direccion{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#numDir{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#contraseña{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#Repcontraseña{
+  box-shadow: -1px 4.2px 1px gray;
+}
+
+#submit{
+  border-color: orange;
+  background-color: orange;
+  color: white;
+}
+
+#validarDatos{
+  border-color: orange;
+  background-color: orange;
+  color: white;
+}
