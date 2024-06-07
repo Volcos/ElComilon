@@ -10,3 +10,6 @@ def register(request):
 
 def login(request):
     return render(request, 'pages/Login.html')
+    
+def detalleCompra(request):
+    return render(request, 'pages/Detail.html')
