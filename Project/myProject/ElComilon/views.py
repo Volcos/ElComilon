@@ -15,3 +15,6 @@ def login(request):
     
 def detalleCompra(request):
     return render(request, 'pages/Detail.html')
+
+def Profile(request):
+    return render(request, 'pages/Profile.html')
