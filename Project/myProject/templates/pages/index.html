@@ -181,6 +181,23 @@
             </div>
             <div class="container">
                 <div class="element food" id="Carrusel">
+                    <div class="owl-carousel owl-theme food-container"></div>
+                    {% for producto in productos %}
+                        <div class="item">
+                            <a href="/html/DetailProduct.html?id=${plato.id}" class="carta" id="{{producto.id}}">
+                                <div class="card comida" style="width: 16rem; height: 26rem;">
+                                    <div class="img">
+                                        <img src="{% static '/producto.imagen' %}" class="card-img-top" alt="" onerror="this.src='/img/platos/default.jpg';">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{producto.nombre}}</h5>
+                                        <hr>
+                                        <p class="card-text">{{producto.descrpcion}}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>    
             
@@ -206,7 +223,7 @@
     <link rel="stylesheet" href="{% static 'css/Navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <script type="module" src="/js/Tablas.js"></script>
+    <script type="module" src="{% static '/js/Tablas.js' %}"></script>
     <script src="jquery.min.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.7.1.js"
