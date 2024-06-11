@@ -1,0 +1,45 @@
+
+.main{
+    padding: 15px;
+}
+
+
+.container{
+    margin-bottom: 10px;
+}
+
+.topbar{
+    background-color: orange;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.topbar a{
+    float: right;
+    color: white;
+    text-align: center;
+    padding: 20px 26px;
+    text-decoration: none;
+}
+
+#lateral{
+    background-color: rgb(145, 140, 140);
+    color: white;
+    height: 100%;
+}
+
+.sidebar a{
+    margin-left: 10px;
+    display: block;
+    color: white;
+    padding-bottom: 10px;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}

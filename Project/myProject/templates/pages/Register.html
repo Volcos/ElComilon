@@ -37,13 +37,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-floating col-5 mb-3 ">
+                        <div class="form-floating col-6 mb-3 ">
                             <input type="email" name="correoP" id="correoP" class="form-control">
                             <label for="correoP">Correo Personal</label>
-                        </div>
-                        <div class="form-floating col-5 mb-3">
-                            <input type="email" name="correoE" id="correoE" class="form-control">
-                            <label for="correoE">Correo Empresarial</label>
                         </div>
                         <div class="row g-3 mb-3">
                             <div class="col-md">
@@ -70,15 +66,16 @@
                             </div>
                         </div>
                         <div class="form-floating col-5 mb-3">
-                            <select name="comuna" id="comuna" class="form-select">
-
-                                <option value="1">Recoleta</option>
-                                <option value="2">Puente Alto</option>
-                                <option value="3">Providencia</option>
-                                <option value="4">Santiago</option>
-                                <option value="5">Maipu</option>
+                            <select name="optRegion" id="optRegion" class="form-select mx-auto text-center" style="box-shadow: -1px 4.2px 1px gray;">
+        
                             </select>
-                            <label for="comuna">Comuna</label>
+                            <label for="optRegion">Región</label>
+                        </div>
+                        <div class="form-floating col-5 mb-3">
+                            <select name="optComuna" id="optComuna" class="form-select mx-auto text-center" style="box-shadow: -1px 4.2px 1px gray;">
+        
+                            </select>
+                            <label for="optComuna">Comuna</label>
                         </div>
                         <div class="row g-2">
                             <div class="col-md-8">
@@ -108,9 +105,7 @@
                             <input type="submit" id="submit" name="submit" value="Registrarse" class="btn btn-outline-primary rounded-pill" onclick="validar()">
                         </div>
                     </form>
-
                 </div>
-
             </div>
         </div>
     </main>
@@ -119,11 +114,50 @@
     <link rel="stylesheet" href="{% static 'css/Register.css' %}">
     <link rel="stylesheet" href="{% static 'css/Navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-
     <script src="../js/Register.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    </script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+     <script>
+        
+        
+        $(document).ready(function () {
+             $.ajax({
+                 type: "GET",
+                 url: "https://apis.digital.gob.cl/dpa/regiones",
+                 data: "data",
+                 dataType: "JSONP",
+                 success: function (data) {
+                     $.each(data, function (i, tmp) {
+                         $("#optRegion").append("" +
+                             "<option value='" + tmp.codigo +
+                             "'>" + tmp.nombre + "</option>"
+                         )
+                     })
+                 }
+             });
+             /* Funcion de Ajax para rellenar Comunas segun la region elegida  */
+             $("#optRegion").change(function () {
+                 let comuna = $("#optRegion").val();
+                 $.ajax({
+                     type: "GET",
+                     url: "https://apis.digital.gob.cl/dpa/regiones/" + comuna + "/comunas",
+                     data: "data",
+                     dataType: "JSONP",
+                     success: function (data) {
+                         $("#optComuna").html("");
+                         $.each(data, function (i, tmp) {
+                             $("#optComuna").append("" +
+                                 "<option>" + tmp.nombre + "</option>"
+                             )
+                         })
+                     }
+                 });
+             })
+         })
+     </script>
 </body>
 
 </html>
