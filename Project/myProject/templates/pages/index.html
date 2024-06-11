@@ -167,9 +167,9 @@
             PLATOS Y CARDS --------------------------------------------------------------------------------------------
         -->
 
-          <div class="restaurantes_txt">
-            <h1>PLATOS</h1>
-          </div>
+        <div class="restaurantes_txt">
+        <h1>PLATOS</h1>
+        </div>
         <HR></HR>
           <div class="platos">
              <div class="element butt l" id="Lbutton">
@@ -184,20 +184,20 @@
                     <div class="owl-carousel owl-theme food-container"></div>
                     {% for producto in productos %}
                         <div class="item">
-                            <a href="/html/DetailProduct.html?id=${plato.id}" class="carta" id="{{producto.id}}">
+                            <a href="" class="carta" id="{{producto.id}}">
                                 <div class="card comida" style="width: 16rem; height: 26rem;">
                                     <div class="img">
-                                        <img src="{% static '/producto.imagen' %}" class="card-img-top" alt="" onerror="this.src='/img/platos/default.jpg';">
+                                        <img src="{% static 'producto.imagen' %}" class="card-img-top" alt="">
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{producto.nombre}}</h5>
                                         <hr>
-                                        <p class="card-text">{{producto.descrpcion}}</p>
+                                        <p class="card-text">{{producto.descripcion}}</p>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                    {% endfor %}
+                    {% endfor %} 
                 </div>
             </div>    
             
@@ -211,9 +211,6 @@
           </div>
         
         <br><br><br><br><br>
-
-    
-
         <br><br><br><br><br>
 
     </main>
