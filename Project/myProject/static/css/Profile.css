@@ -1,3 +1,6 @@
-.container-fluid{
-    z-index: 2;
+.body{
+    margin-top: 20px;
+    background-color: red;
 }
+
+    
