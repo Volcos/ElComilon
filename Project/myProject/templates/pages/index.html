@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurant "El Comilon"</title>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     
-    <script src="/js/Modal.js" defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -62,7 +62,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img">
-                                <img src="/img/le_ñam_logo.png" class="card-img-top" alt="..." >
+                                <img src="" class="card-img-top" alt="..." >
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Le Ñam</h5>
@@ -74,7 +74,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img">
-                                <img src="/img/latin-grill.jpg" class="card-img-top" alt="..." >
+                                <img src="" class="card-img-top" alt="..." >
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Latin Grill</h5>
@@ -84,7 +84,7 @@
                      <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img"> 
-                                <img src="/img/la-cabrera.jpg" class="card-img-top" alt="...">
+                                <img src="" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">La Cabrera</h5>
@@ -94,7 +94,7 @@
                      <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img"> 
-                                <img src="/img/liguria.jpg" class="card-img-top" alt="...">
+                                <img src="" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Liguria</h5>
@@ -108,7 +108,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img">
-                                <img src="/img/tomodashi_go.jpg" class="card-img-top" alt="...">
+                                <img src="" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Tomodashi</h5>
@@ -118,7 +118,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img">
-                                <img src="/img/Rishtedar.jpg" class="card-img-top" alt="..." >
+                                <img src="" class="card-img-top" alt="..." >
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Rishtedar</h5>
@@ -128,7 +128,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img"> 
-                                <img src="/img/Zanzibar.jpg" class="card-img-top" alt="...">
+                                <img src="" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Zanzibar</h5>
@@ -138,7 +138,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img"> 
-                                <img src="/img/Tanaka.jpg" class="card-img-top" alt="...">
+                                <img src="" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Tanaka</h5>
@@ -175,16 +175,16 @@
              <div class="element butt l" id="Lbutton">
                 <div class="left">
                     <button>
-                        <img src="/img/button.png" alt="" width="20px">
+                        <img src="{% static '/img/botones/button.png' %}" alt="" width="20px">
                     </button>
                 </div>
             </div>
             <div class="container">
                 <div class="element food" id="Carrusel">
-                    <div class="owl-carousel owl-theme food-container"></div>
-                    {% for producto in productos %}
+                    <div class="owl-carousel owl-theme food-container">
+                        {% for producto in productos %}
                         <div class="item">
-                            <a href="" class="carta" id="{{producto.id}}">
+                            <a href="" class="carta">
                                 <div class="card comida" style="width: 16rem; height: 26rem;">
                                     <div class="img">
                                         <img src="{% static 'producto.imagen' %}" class="card-img-top" alt="">
@@ -197,14 +197,15 @@
                                 </div>
                             </a>
                         </div>
-                    {% endfor %} 
+                        {% endfor %} 
+                    </div>
                 </div>
             </div>    
             
             <div class="element butt r" id="Rbutton">
                 <div class="right">
                     <button >
-                        <img src="/img/button.png" alt="" width="20px">
+                        <img src="{% static '/img/botones/button.png' %}" alt="" width="20px">
                     </button>
                 </div>
             </div> 
@@ -217,20 +218,21 @@
 
     {% include 'bases/footer.html' %}
 
+
     <link rel="stylesheet" href="{% static 'css/Navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <script type="module" src="{% static '/js/Tablas.js' %}"></script>
-    <script src="jquery.min.js"></script>
     <script
     src="https://code.jquery.com/jquery-3.7.1.js"
     integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous">
     </script>
-  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="{% static '/js/Modal.js' %}" defer></script>
+    <script src="{% static '/js/Cards.js' %}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="/js/Carrusel.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
