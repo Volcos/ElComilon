@@ -18,3 +18,11 @@ def detalleCompra(request):
 
 def Profile(request):
     return render(request, 'pages/Profile.html')
+
+def detailProduct(request,pk):
+    plato = Producto.objects.get(id_producto=pk)
+    context = {
+        "plato":plato
+    }
+    return render(request, 'pages/DetailProduct.html',context)
+

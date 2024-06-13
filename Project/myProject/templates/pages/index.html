@@ -184,10 +184,10 @@
                     <div class="owl-carousel owl-theme food-container">
                         {% for producto in productos %}
                         <div class="item">
-                            <a href="" class="carta">
+                            <a href="{% url 'DetailProduct' pk=producto.id_producto %}" class="carta">
                                 <div class="card comida" style="width: 16rem; height: 26rem;">
                                     <div class="img">
-                                        <img src="{% static 'producto.imagen' %}" class="card-img-top" alt="">
+                                        <img src="{% static 'img/platos/Fideos.png' %}" class="card-img-top" alt="">
                                     </div>
                                     <div class="card-body">
                                         <h5 class="card-title">{{producto.nombre}}</h5>

@@ -1,0 +1,152 @@
+
+main{
+    background-color: #f1f1f1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.Contenedor{
+    display: flex;
+    flex-direction: column;
+    border-radius: 30px;
+    background: #f9f9f9;
+    border: 2px solid rgb(193,187,187);
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 0;
+    width: 800px;
+    height: 600px;
+    /*justify-content: space-evenly;*/
+
+}
+.PlatoPrincipal{
+    width: 100%;
+    height: 220px;
+    vertical-align: top;
+}
+
+.PlatoPrincipal img{
+    
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    object-fit: fill;
+}
+
+hr {
+    display: block;
+    margin-top: 0.5px;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    border-color: gray;
+}
+
+.CantidadCom{
+    text-align: end;
+    margin-right: 10px;
+    margin-top: -50px;
+}
+  
+.Linea1{
+    text-align: end;
+    margin-right: 10px;
+}
+
+.NomProducto h5{
+    margin-left: 20px;
+    color: #656565;
+}
+
+.Descripcion h6{
+    margin-left: 20px;
+    color: #A8A8A8;
+}
+.Linea1 .Cantidad {
+    font-family: 'ROBOTO',sans-serif;
+    text-align: end;
+    align-items: right;
+    color: black;
+    margin-left: 10px;
+}
+
+.Fila .Cantidad option{
+    font-family: 'ROBOTO',sans-serif;
+}
+.Fila{
+    display: flex;
+    margin-left: 20px;
+    background-color: transparent;
+    align-items: center;
+
+}
+
+.Fila h6{
+    color: #A8A8A8;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
+
+
+
+
+
+.SeguirCompra{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: end;
+}
+
+.SeguirCompra .btn{
+    background-color: #EFAB52;
+    border-radius: 10px;
+    color: #FFFFFF;
+}
+
+.Pagar{
+    margin-right: 10px;
+    width: 100%;
+    height: 50px;
+}
+
+.Pagar .btn{
+    background-color: #D9D9D9;
+    display: flex;
+    text-align: end;
+    align-items: right;
+    justify-content: flex-end;
+    
+}
+
+.Pagar input{
+    margin-right: 10px;
+    background-color: transparent;
+    border: transparent;
+    width: 90px;
+}
+.Pagar a{
+    text-decoration: none;
+    color:#656565;
+}
+
+.Pagar ::placeholder{
+    color: black;
+    font-family: 'ROBOTO',sans-serif;
+}
+
+.Ingredientes{
+    margin-top: 20px;
+    margin-left: 20px;
+    color: #656565;
+}
+
+.Pago{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
