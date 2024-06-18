@@ -4,7 +4,7 @@ from django.db import models
 
 
 class Producto(models.Model):
-    id_producto = models.IntegerField(primary_key = True)
+    id_producto = models.AutoField(primary_key = True)
     nombre = models.CharField(max_length = 80)
     precio = models.IntegerField()
     descripcion = models.CharField(max_length = 50)
