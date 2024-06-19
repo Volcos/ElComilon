@@ -28,13 +28,19 @@
 
 /*CARD'S Y RESTAURANTES*/
 .restaurantes_txt{
+    display: flex;
+    margin-left: 1rem;
+}
+.titulo{
+    width: 400px;
     color:rgb(239,171,82) ;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 5rem;
     font-weight: bold;
-    margin-left: 5rem;
 }
-
+.agregarNuevo{
+    font-size: small;
+}
 .card{
     background-color: #EFAB52 ;
     border-radius: 20px;
