@@ -22,6 +22,15 @@
         <!-- 
             CARRUSEL --------------------------------------------------------------------------------------------
         -->
+        <br><br><br><br>
+        <div class="oferta_txt">
+            <div class="agregarOferta">
+                <a href="{% url 'AgregarPlato' %}">
+                    <img src="{% static 'img/botones/add.png' %}" alt="" width="30px">
+                    <h5>Agregar Oferta</h5>
+                </a>
+            </div>
+        </div>
         <br>
         <div id="carouselExample1" class="carousel slide">
             <div class="carousel-inner">
@@ -54,7 +63,10 @@
                 <h1>RESTAURANTES</h1>
             </div>
             <div class="agregarNuevo">
-                <a href="">hola</a>
+                <a href="">
+                    <img src="{% static 'img/botones/add.png' %}" alt="" width="30px">
+                    <h5>Agregar Restaurante</h5>
+                </a>
             </div>
           </div>
           <hr>
@@ -67,7 +79,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img">
-                                <img src="" class="card-img-top" alt="..." >
+                                <img src="{% static 'img/DefaultImage.jpg' %}" class="card-img-top" alt="..." >
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Le Ñam</h5>
@@ -79,7 +91,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img">
-                                <img src="" class="card-img-top" alt="..." >
+                                <img src="{% static 'img/DefaultImage.jpg' %}" class="card-img-top" alt="..." >
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Latin Grill</h5>
@@ -89,7 +101,7 @@
                      <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img"> 
-                                <img src="" class="card-img-top" alt="...">
+                                <img src="{% static 'img/DefaultImage.jpg' %}" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">La Cabrera</h5>
@@ -99,7 +111,7 @@
                      <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img"> 
-                                <img src="" class="card-img-top" alt="...">
+                                <img src="{% static 'img/DefaultImage.jpg' %}" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Liguria</h5>
@@ -113,7 +125,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img">
-                                <img src="" class="card-img-top" alt="...">
+                                <img src="{% static 'img/DefaultImage.jpg' %}" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Tomodashi</h5>
@@ -123,7 +135,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img">
-                                <img src="" class="card-img-top" alt="..." >
+                                <img src="{% static 'img/DefaultImage.jpg' %}" class="card-img-top" alt="..." >
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Rishtedar</h5>
@@ -133,7 +145,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img"> 
-                                <img src="" class="card-img-top" alt="...">
+                                <img src="{% static 'img/DefaultImage.jpg' %}" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Zanzibar</h5>
@@ -143,7 +155,7 @@
                     <a href="">
                         <div class="card" style="width: 16rem; height: 20rem;">
                             <div class="img"> 
-                                <img src="" class="card-img-top" alt="...">
+                                <img src="{% static 'img/DefaultImage.jpg' %}" class="card-img-top" alt="...">
                             </div>
                             <div class="card-body">
                             <h5 class="card-title">Tanaka</h5>
@@ -173,8 +185,16 @@
         -->
 
         <div class="restaurantes_txt">
-        <h1>PLATOS</h1>
-        </div>
+            <div class="titulo">
+                <h1>PLATOS</h1>
+            </div>
+            <div class="agregarNuevo">
+                <a href="">
+                    <img src="{% static 'img/botones/add.png' %}" alt="" width="30px">
+                    <h5>Agregar Plato</h5>
+                </a>
+            </div>
+          </div>
         <HR></HR>
           <div class="platos">
              <div class="element butt l" id="Lbutton">
@@ -227,7 +247,6 @@
     <link rel="stylesheet" href="{% static 'css/Navbar.css' %}">
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <link rel="stylesheet" href="{% static 'css/indexAdmin.css' %}">
 
     <script
     src="https://code.jquery.com/jquery-3.7.1.js"

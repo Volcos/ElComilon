@@ -29,3 +29,6 @@ def detailProduct(request,pk):
 def adminIndex(request):
     productos = Producto.objects.all()
     return render(request, 'pages/adminViews/AdminIndex.html', {'productos':productos})
+
+def agregarPlato(request):
+    return render(request, 'pages/adminViews/AgregarPlato.html')
