@@ -1,44 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/Perfil.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-    {% include 'bases/header.html' %}
-    <main>
-        <div class="container mb-5 pt-5">
-            <div class="row pt-5 mx-auto">
-                <div class="topbar">
-                    <a href="">Cerrar sesión</a>
-                    <a href="">Soporte</a>
-                    <a href=""></a>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 mt-1">
-                        <div class="card text-center sidebar" id="lateral">
-                            <div class="card-body">
-                                <img src="{% static '/img/letra-c.png' %}" class="rounded" width="100">
-                                <div class="mt-3">
-                                    <h3>Benjamín Vargas</h3>
-                                        <button onclick="CambiarVista()"  id="Datos">Datos</button>
-                                        <button onclick="CambiarVista()" id="Historial">Historial de Pedidos</button>
-                                        <button onclick="CambiarVista()" id="Seguimiento">Seguimiento de compra</button>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8 mt-1">
-                        <div class="card mb-3 content" id="Contenedor-Datos">
-                            <h1 class="m-3 pt-3">Datos de usuario</h1>
+function CambiarVista(){
+
+    let cardbody = document.getElementById("card-body");
+
+    let button1 = document.getElementById("Datos");
+    let button2 = document.getElementById("Historial");
+    let button3 = document.getElementById("Seguimiento");
+
+    button1.addEventListener("click", function() {
+        cardbody.innerHTML = `
                             <div class="card-body" id="card-body">
                                 <div class="row">
                                     <div class="col-md-3">
@@ -112,16 +82,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    {% include 'bases/footer.html' %}
-    <script src="{% static '/js/Profile.js' %}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
-</body>
-</html>
+                        </div>`;
+    });
+    
+    button2.addEventListener("click", function() {
+        cardbody.textContent = "Text for button 2";
+    });
+    
+    button3.addEventListener("click", function() {
+        cardbody.textContent = "Text for button 3";
+    });
+
+}

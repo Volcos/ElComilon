@@ -28,13 +28,16 @@
     height: 100%;
 }
 
-.sidebar a{
+.sidebar button{
     margin-left: 10px;
     display: block;
     color: white;
     padding-bottom: 10px;
     font-size: 30px;
+    border: none;
+    background-color: rgb(145, 140, 140);
     text-decoration: none;
+    text-align: center;
 }
 
 .card{

@@ -50,7 +50,7 @@ class Usuario(models.Model):
         "Comuna", on_delete=models.CASCADE,db_column="idComuna"
     )
     direccion = models.CharField(max_length=40)
-    numero_direccion = models.IntegerField(max_length=6)
+    numero_direccion = models.IntegerField()
     contraseña = models.CharField(max_length=30)
 
 
