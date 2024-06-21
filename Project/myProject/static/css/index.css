@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /*CARRUSEL*/
+
 .carousel-item img{
     width: 100%;
     height: 600px;
@@ -30,6 +31,9 @@
 .restaurantes_txt{
     display: flex;
     margin-left: 1rem;
+    justify-content: space-between;
+    color:rgb(239,171,82);
+    font-weight: bold;
 }
 .titulo{
     width: 400px;
@@ -38,8 +42,34 @@
     font-size: 5rem;
     font-weight: bold;
 }
+.oferta_txt{
+    display: flex;
+    margin-left: 1rem;
+    justify-content: flex-end;
+}
+.agregarOferta{
+    display: flex;
+    justify-content: flex-end;
+}
+.agregarOferta a{
+    display: flex;
+    text-decoration: none;
+    color: #EFAB52;
+}
+.agregarOferta a h5{
+    margin-left: 10px;
+}
 .agregarNuevo{
-    font-size: small;
+    font-size:30px;
+    margin-right: 1rem;
+}
+.agregarNuevo a{
+    display: flex;
+    text-decoration: none;
+    color: #EFAB52;
+}
+.agregarNuevo a h5{
+    margin-left: 10px;
 }
 .card{
     background-color: #EFAB52 ;

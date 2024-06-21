@@ -8,5 +8,6 @@ urlpatterns = [
     path('detalleCompra', views.detalleCompra, name='detalleCompra'),
     path('Profile',views.Profile, name='Profile'),
     path('DetailProduct/<str:pk>',views.detailProduct, name='DetailProduct'),
-    path('AdminIndex',views.adminIndex, name='AdminIndex')
+    path('AdminIndex',views.adminIndex, name='AdminIndex'),
+    path('AgregarPlato',views.agregarPlato,name='AgregarPlato'),
 ]
