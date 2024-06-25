@@ -31,4 +31,15 @@ def adminIndex(request):
     return render(request, 'pages/adminViews/AdminIndex.html', {'productos':productos})
 
 def agregarPlato(request):
-    return render(request, 'pages/adminViews/AgregarPlato.html')
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        precio = request.POST['precio']
+        descripcion = request.POST['descripcion']
+        ingredientes = request.POST['ingredientes']
+        imagen = request.POST['imagen']
+        plato = Producto.objects.create(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
+        plato.save()
+        return render(request, 'pages/adminViews/AgregarPlato.html')    
+    else:
+        return render(request, 'pages/adminViews/AgregarPlato.html')    
+    

@@ -17,6 +17,7 @@
             <div class="contenedor">
                 <h3>AGREGAR UN PLATO</h3>
                 <form action="" name="formulario" id="formulario" method="post">
+                    {% csrf_token %}
                     <div class="casilla nombreProducto">
                         <div class="form-floating Nombre">
                             <input type="text" class="form-control" name="nombre" id="nombre">
@@ -25,26 +26,31 @@
                     </div>
                     <div class="casilla precio">
                         <div class="form-floating Precio">
-                            <input type="number" class="form-control" name="Precio" id="Precio">
+                            <input type="number" class="form-control" name="precio" id="precio">
                             <label for="precio">Precio</label>
                         </div>
                     </div>
                     <div class="casilla descripcion">
                         <div class="form-floating Descripción">
-                            <input type="text" class="form-control" name="Descripción" id="Descripción">
+                            <input type="text" class="form-control" name="descripcion" id="descripcion">
                             <label for="descripcion">Descripción</label>
                         </div>
                     </div>
                     <div class="casilla ingredientes">
                         <div class="form-floating Ingredientes">
-                            <input type="text" class="form-control" name="Ingredientes" id="Ingredientes">
+                            <input type="text" class="form-control" name="ingredientes" id="ingredientes">
                             <label for="ingredientes">Ingredientes</label>
                         </div>
                     </div>
                     <div class="casilla imagen">
                         <div class="form-floating Imagen">
-                            <input type="text" class="form-control" name="Imagen" id="Imagen">
+                            <input type="text" class="form-control" name="imagen" id="ingredientes">
                             <label for="imagen">Imagen</label>
+                        </div>
+                    </div>
+                    <div class="contenedor-boton">
+                        <div class="boton">
+                            <input type="submit" value="Agregar Plato">
                         </div>
                     </div>
                 </form>

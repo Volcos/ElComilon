@@ -7,7 +7,7 @@
 .contenedor{
     width: 500px;
     border-style: solid;
-    border-color: black;
+    border-color: rgb(140, 140, 140);
     border-radius: 15px;
     background-color: #f9f9f9;
     padding: 20px;
@@ -29,4 +29,21 @@ input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.contenedor-boton{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: none;
+    margin-top: 3rem;
+}
+.boton input{
+    border-radius: 10px;
+    background-color: #EFAB52;
+    border:none;
+    color: white;
+    font-weight:600;
+    padding: 10px;
+    font-size: medium;
 }
