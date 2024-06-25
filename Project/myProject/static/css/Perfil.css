@@ -28,7 +28,7 @@
     height: 100%;
 }
 
-.sidebar button{
+.sidebar button, .sidebar a{
     margin-left: 10px;
     display: block;
     color: white;
@@ -37,8 +37,10 @@
     border: none;
     background-color: rgb(145, 140, 140);
     text-decoration: none;
-    text-align: center;
+    text-align: left;
 }
+
+
 
 .card{
     position: relative;

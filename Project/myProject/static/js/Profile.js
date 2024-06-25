@@ -5,11 +5,10 @@ function CambiarVista(){
 
     let button1 = document.getElementById("Datos");
     let button2 = document.getElementById("Historial");
-    let button3 = document.getElementById("Seguimiento");
 
     button1.addEventListener("click", function() {
         cardbody.innerHTML = `
-                            <div class="card-body" id="card-body">
+                            
                                 <div class="row">
                                     <div class="col-md-3">
                                         <h5>Nombre</h5>
@@ -81,16 +80,13 @@ function CambiarVista(){
                                         **********
                                     </div>
                                 </div>
-                            </div>
+
                         </div>`;
     });
     
     button2.addEventListener("click", function() {
-        cardbody.textContent = "Text for button 2";
+        cardbody.innerHTML = `div class="card-body" id="card-body">
+        `
     });
     
-    button3.addEventListener("click", function() {
-        cardbody.textContent = "Text for button 3";
-    });
-
 }

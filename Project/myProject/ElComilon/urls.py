@@ -10,4 +10,5 @@ urlpatterns = [
     path('DetailProduct/<str:pk>',views.detailProduct, name='DetailProduct'),
     path('AdminIndex',views.adminIndex, name='AdminIndex'),
     path('AgregarPlato',views.agregarPlato,name='AgregarPlato'),
+    path('OrderTracking',views.OrderTracking,name='OrderTracking'),
 ]

@@ -26,6 +26,10 @@ def detailProduct(request,pk):
     }
     return render(request, 'pages/DetailProduct.html',context)
 
+def OrderTracking(request):
+    return render(request, 'pages/OrderTracking.html')
+
+
 def adminIndex(request):
     productos = Producto.objects.all()
     return render(request, 'pages/adminViews/AdminIndex.html', {'productos':productos})
