@@ -59,3 +59,52 @@
         </div>  
     </div>
 </header> 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var carritoButton = document.querySelector('[data-bs-target="#offcanvasRight"]');
+        carritoButton.addEventListener('click', function() {
+            fetch('/ver_carrito/')
+                .then(response => response.json())
+                .then(data => {
+                    var carritoContainer = document.getElementById('identificador');
+                    carritoContainer.innerHTML = '';
+                    for (var productoId in data) {
+                        var producto = data[productoId];
+                        var productoElement = document.createElement('div');
+                        productoElement.innerHTML = `
+                            <div data-producto-id="${productoId}" class="plato">
+                                <p>${producto.nombre} - $${producto.precio*producto.cantidad}</p>
+                                <div class="cantidad-eliminar">
+                                    <div class="cantidad">
+                                         <p>Cantidad: ${producto.cantidad}</p>
+                                    </div>        
+                                    <div class="eliminar">
+                                        <button onclick="eliminarDelCarrito(${productoId})">Eliminar</button>
+                                    </div>       
+                                </div>
+                            </div>
+                        `;
+                        carritoContainer.appendChild(productoElement);
+                    }
+                });
+        });
+    });
+
+    function eliminarDelCarrito(productoId) {
+        fetch(`/eliminar_del_carrito/${productoId}/`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            }
+        })
+        .then(response => {
+            if (response.status === 200) {
+                console.log('Producto eliminado');
+                document.querySelector(`[data-producto-id="${productoId}"]`).remove();
+            }
+        });
+    }
+</script>
+

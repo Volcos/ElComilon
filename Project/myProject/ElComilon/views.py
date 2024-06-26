@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
+from django.http import JsonResponse
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.shortcuts import redirect
@@ -83,3 +84,44 @@ def crud(request):
         "usuarios": usuarios,
     }
     return render(request, )
+
+def agregarPlato(request):
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        precio = request.POST['precio']
+        descripcion = request.POST['descripcion']
+        ingredientes = request.POST['ingredientes']
+        imagen = request.POST['imagen']
+        plato = Producto.objects.create(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
+        plato.save()
+        return render(request, 'pages/adminViews/AgregarPlato.html')    
+    else:
+        return render(request, 'pages/adminViews/AgregarPlato.html')    
+    
+def agregar_al_carrito(request, producto_id):
+    carrito = request.session.get('carrito', {})
+    producto = get_object_or_404(Producto, id_producto=producto_id)
+    if str(producto_id) in carrito:
+        carrito[str(producto_id)]['cantidad'] += 1
+    else:
+        carrito[str(producto_id)] = {
+            'nombre': producto.nombre,
+            'precio': producto.precio,
+            'descripcion': producto.descripcion,
+            'ingredientes': producto.ingredientes,
+            'imagen': producto.imagen,
+            'cantidad': 1
+        }
+    request.session['carrito'] = carrito
+    return redirect('ver_carrito')
+    
+def ver_carrito(request):
+    carrito = request.session.get('carrito', {})
+    return JsonResponse(carrito)
+
+def eliminar_del_carrito(request, producto_id):
+    carrito = request.session.get('carrito', {})
+    if str(producto_id) in carrito:
+        del carrito[str(producto_id)]
+        request.session['carrito'] = carrito
+    return JsonResponse({'success': True})

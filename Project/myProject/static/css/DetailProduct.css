@@ -102,10 +102,14 @@ hr {
     text-align: end;
 }
 
-.SeguirCompra .btn{
+.SeguirCompra button{
     background-color: #EFAB52;
     border-radius: 10px;
+    border-color: transparent;
     color: #FFFFFF;
+    padding: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .Pagar{

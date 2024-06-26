@@ -12,7 +12,7 @@
         @import url('https://fonts.cdnfonts.com/css/ponnala');
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
     </style>
-    
+    <script src="{% static 'js/AgregarCarro.js' %}"></script>
 </head>
 <body>
     {% include 'bases/header.html' %}
@@ -52,11 +52,11 @@
               </div>
               <div class="Pago">
                 <div class="SeguirCompra" id="agregar">
-                  <button type="ingresar" class="btn" >Agregar y seguir comprando</button>
+                  <button class="agregar-producto" data-product-id="{{ plato.id_producto }}" id>Agregar y seguir comprando</button>
                 </div>
                 <div class="Pagar">
                   <div>
-                      <button type="Ingresar" class="btn" style="float: right;" ><a href="Detail.html">Pagar ahora &middot; {{plato.precio}} </a></button>
+                      <button  class="btn" style="float: right;" ><a href="Detail.html">Pagar ahora &middot; {{plato.precio}} </a></button>
                   </div>     
                 </div> 
               </div>

@@ -149,6 +149,28 @@ header{
     width: 100%;
 }
 
+.plato{
+    background-color: #EFAB52;
+    height: 70px;
+    border-radius: 15px;
+}
+.plato p{
+    padding-left: 10px;
+    font-weight: bold;
+    color: white;
+}
+.cantidad-eliminar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cantidad-eliminar .eliminar button{
+    border-color: transparent;
+    background-color: transparent;
+    color: rgb(241, 241, 241);
+    font-weight: 500;
+    text-decoration: underline;
+}
 
 @media(max-width:880px){
     .buscador .form-control{
