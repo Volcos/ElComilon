@@ -12,7 +12,7 @@ def index(request):
     return render(request, 'pages/index.html', {'productos':productos})
 
 def register(request):
-    if request == 'POST':
+    if request.method == 'POST':
         nombre = request.POST['nombre']
         apellido = request.POST['apellido']
         email = request.POST['correoP']

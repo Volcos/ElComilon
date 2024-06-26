@@ -12,12 +12,6 @@ const ValidContraseña = contraseña => {
 
 
 
-formulario.addEventListener('submit',e => {
-    e.preventDefault();
-
-    validar();
-});
-
 /*PENDIENTE FORMATO NUMERO */
 function formatPhoneNumber(phoneNumberString) {
     var cleaned = ('' + phoneNumberString).replace(/\\D/g, '');
