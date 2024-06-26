@@ -105,6 +105,11 @@
                             <button type="button" id="validarDatos" name="validarDatos" onclick="validar()" class="btn btn-outline-primary rounded-pill">Validar</button><br><br>
                             <input type="submit" id="submit" name="submit" value="Registrarse" class="btn btn-outline-primary rounded-pill" onclick="validar()">
                         </div>
+                        {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
                     </form>
                 </div>
             </div>
