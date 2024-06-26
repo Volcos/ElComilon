@@ -16,27 +16,26 @@ def register(request):
         nombre = request.POST['nombre']
         apellido = request.POST['apellido']
         email = request.POST['correoP']
-        fecha_nacimiento = request.POST['fechaN']
+        fecha_nacimiento = request.POST['fecnac']
         genero = request.POST['genero']
-        telefono = request.POST['telefono']
+        telefono = request.POST['numtelef']
         region = request.POST['optRegion']
         comuna = request.POST['optComuna']
         direccion = request.POST['direccion']
         numero_direccion = request.POST['numDir']
         contraseña = request.POST['contraseña']
-        Repcontraseña = request.POST['RepContraseña']
-        if contraseña == Repcontraseña:
-            if Usuario.objects.filter(email=email).exists():
-                messages.info(request,'El correo ya existe')
-                return redirect('register')
-            else:
-                usuario = Usuario.objects.create(nombre = nombre, apellido = apellido, email = email, fecha_nacimiento = fecha_nacimiento, genero = genero
-                                                      , telefono = telefono, region = region, comuna = comuna, direccion = direccion, numero_direccion = numero_direccion, contraseña = contraseña)
-                usuario.save()
-                return redirect('login')
-        else:
-            messages.info(request,'Las contraseñas no coinciden')
+        objGenero = Genero.objects.get(id_genero=genero)
+        objRegion = Region.objects.get(id_region=region)
+        objComuna = Comuna.objects.get(id_comuna=comuna)
+
+        if Usuario.objects.filter(email=email).exists():
+            messages.info(request,'El correo ya existe')
             return redirect('register')
+        else:
+            usuario = Usuario.objects.create(nombre = nombre, apellido = apellido, email = email, fecha_nacimiento = fecha_nacimiento, genero = objGenero
+                                                      , telefono = telefono, region = objRegion, comuna = objComuna, direccion = direccion, numero_direccion = numero_direccion, contraseña = contraseña)
+            usuario.save()
+            return redirect('login')
     else:
         return render(request, 'pages/Register.html')   
 
