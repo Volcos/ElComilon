@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User,auth
 from django.contrib import messages
 from django.shortcuts import redirect
-from .models import Producto,Usuario,Genero,Region,Comuna
+from .models import Producto,Usuario,Genero
 
 
 # Create your views here.
@@ -26,15 +26,13 @@ def register(request):
         numero_direccion = request.POST['numDir']
         contraseña = request.POST['contraseña']
         objGenero = Genero.objects.get(id_genero=genero)
-        objRegion = Region.objects.get(id_region=region)
-        objComuna = Comuna.objects.get(id_comuna=comuna)
 
         if Usuario.objects.filter(email=email).exists():
             messages.info(request,'El correo ya existe')
             return redirect('register')
         else:
-            usuario = Usuario.objects.create(nombre = nombre, apellido = apellido, email = email, fecha_nacimiento = fecha_nacimiento, genero = objGenero
-                                                      , telefono = telefono, region = objRegion, comuna = objComuna, direccion = direccion, numero_direccion = numero_direccion, contraseña = contraseña)
+            usuario = Usuario.objects.create(nombre = nombre, apellido = apellido, email = email, fecha_nacimiento = fecha_nacimiento, genero = objGenero,
+                                                     telefono = telefono, region = region, comuna = comuna, direccion = direccion, numero_direccion = numero_direccion, contraseña = contraseña)
             usuario.save()
             return redirect('login')
     else:
