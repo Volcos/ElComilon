@@ -13,7 +13,14 @@ def index(request):
     return render(request, 'pages/index.html', {'productos':productos})
 
 def register(request):
-    if request.method == 'POST':
+    if request.method != 'POST':
+        generos = Genero.objects.all()
+        context = {
+            "generos": generos,
+        }
+        return render(request, 'pages/Register.html', context)
+    
+    elif request.method == 'POST':
         nombre = request.POST['nombre']
         apellido = request.POST['apellido']
         email = request.POST['correoP']
@@ -31,8 +38,20 @@ def register(request):
             messages.info(request,'El correo ya existe')
             return redirect('register')
         else:
-            usuario = Usuario.objects.create(nombre = nombre, apellido = apellido, email = email, fecha_nacimiento = fecha_nacimiento, genero = objGenero,
-                                                     telefono = telefono, region = region, comuna = comuna, direccion = direccion, numero_direccion = numero_direccion, contraseña = contraseña)
+
+            usuario = Usuario.objects.create(
+                nombre = nombre,
+                apellido = apellido,
+                email = email,
+                fecha_nacimiento = fecha_nacimiento,
+                id_genero = objGenero,
+                telefono = telefono,
+                region = region,
+                comuna = comuna,
+                direccion = direccion,
+                numero_direccion = numero_direccion,
+                contraseña = contraseña
+            )
             usuario.save()
             return redirect('login')
     else:
