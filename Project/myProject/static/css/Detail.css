@@ -4,8 +4,8 @@
 }
 
 main{
-    margin-top: 40rem;
-    margin-bottom: 40rem;
+    margin-top: 10rem;
+    margin-bottom: 10rem;
 }
 
 .Contenedor{
@@ -141,3 +141,68 @@ main{
     color: #434343;
 }
 
+.compra{
+    background-color: #e2e2e2;
+    border-color: #434343;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.plato-compra{
+    display: flex;
+}
+.imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 15px;
+}
+.imagen img{
+    border-radius: 10px;
+}
+.nombre{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 200px;
+}
+.compra-cantidad-eliminar{
+    margin-left: 5rem;
+}
+.nombre p{
+    display: flex;
+    color: #A8A8A8;
+    justify-content: center;
+    font-weight: bold;
+}
+.precio{
+    display: flex;
+    align-items: center;
+}
+.precio p{
+    background-color: #fdfdfd;
+    padding: 5px;
+    border-radius: 15px;
+}
+.compra-cantidad{
+    padding: 5px;
+}
+.compra-eliminar button{
+    border-color: transparent;
+    background-color: transparent;
+    color: #A8A8A8;
+    font-weight: 500;
+    text-decoration: underline;
+}
+.total{
+    border-radius: 30px;
+    background: #f9f9f9;
+    border: 2px solid rgb(193,187,187);
+    margin-left: 50px;
+    padding: 20px;
+    width: 600px;
+    margin-top: 2rem;
+}
+.total h6{
+    font-size:larger;
+}

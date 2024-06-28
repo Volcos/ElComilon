@@ -22,65 +22,12 @@
             </div>
             <br>
         </div>
-        <div class="Contenedor">
-            <!-- <div class="Linea1">
-                <div class="Plato1">
-                    <img src="/img/platos/Fideos.png" alt="Primer Producto" width="80px" >
-                </div>
-                <div class="Cantidad">
-                    <select class="number">
-                        <option value="number">1</option>
-                        <option value="number">2</option>
-                        <option value="number">3</option>
-                        <option value="number">4</option>
-                        <option value="number">5</option>
-                    </select>
-                </div>
-                <div class="texto">
-                    <h6>Nombre del Producto</h6>
-                </div>
-                <div class="Numero">
-                    <input type="number" placeholder="$8.000">
-                </div>
-            </div>
-            <div class="Linea2">
-                <div class="Plato2">
-                    <img src="/img/platos/pastelchoclo.jpg" alt="Segundo Producto" width="80px">
-                </div>
-                <div class="Cantidad">
-                    <select class="number">
-                        <option value="number">1</option>
-                        <option value="number">2</option>
-                        <option value="number">3</option>
-                        <option value="number">4</option>
-                        <option value="number">5</option>
-                    </select>
-                </div>
-                <div class="Texto">
-                    <h6>Nombre del Producto</h6>
-                </div>
-                <div class="Numero">
-                    <input type="number" placeholder="$10.000">
-                </div>
-            </div>
-            <div class="Linea3">             
-                <div class="Total">
-                    <h6>Total</h6>
-                </div>     
-                <div class="Numero">
-                    <input type="number" placeholder="$10.000">
-                </div>
-            </div>
-            <div class="Linea4">
-                <div class="TotalDesc">
-                    <h6>Total con Descuentos</h6>
-                </div>
-                <div class="Numero">
-                    <input type="number" placeholder="$8.000">
-                </div>
-            </div> -->
+        <div class="Contenedor" id="Contenedor">
             
-        </div>
+        </div> 
+        <div class="total" id="total">
+
+        </div>  
         <div>
             <div class="Comprar">
                 <button type="ingresar" class="btn" >Comprar</button>
@@ -90,33 +37,44 @@
     {% include 'bases/footer.html' %}
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var carritoButton = document.querySelector('[data-bs-target="#offcanvasRight"]');
-            carritoButton.addEventListener('click', function() {
                 fetch('/ver_carrito/')
                     .then(response => response.json())
                     .then(data => {
-                        var carritoContainer = document.getElementById('identificador');
+                        var carritoContainer = document.getElementById('Contenedor');
                         carritoContainer.innerHTML = '';
+                        var totalContainer = document.getElementById('total');
+                        var total = 0;
                         for (var productoId in data) {
                             var producto = data[productoId];
                             var productoElement = document.createElement('div');
+                            productoElement.classList.add('compra');
                             productoElement.innerHTML = `
-                                <div data-producto-id="${productoId}" class="plato">
-                                    <p>${producto.nombre} - $${producto.precio*producto.cantidad}</p>
-                                    <div class="cantidad-eliminar">
-                                        <div class="cantidad">
+                                <div data-producto-id="${productoId}" class="plato-compra">
+                                    <div class="imagen">
+                                        <img src="{% static 'img/DefaultImage.jpg' %}" alt="Primer Producto" width="60px" >
+                                    </div>
+                                    <div class="nombre">
+                                        <p>${producto.nombre}</p>
+                                    </div>
+                                    <div class="precio">
+                                        <p>$${producto.precio*producto.cantidad}</p>
+                                    </div>
+                                    <div class="compra-cantidad-eliminar">
+                                        <div class="compra-cantidad">
                                              <p>Cantidad: ${producto.cantidad}</p>
                                         </div>        
-                                        <div class="eliminar">
+                                        <div class="compra-eliminar">
                                             <button onclick="eliminarDelCarrito(${productoId})">Eliminar</button>
                                         </div>       
                                     </div>
                                 </div>
                             `;
                             carritoContainer.appendChild(productoElement);
+                            total += producto.precio*producto.cantidad;
                         }
+                        totalContainer.innerHTML = `<h6>Total: $${total}</h6>`
                     });
-            });
+            ;
         });
     
         function eliminarDelCarrito(productoId) {
@@ -131,8 +89,25 @@
                 if (response.status === 200) {
                     console.log('Producto eliminado');
                     document.querySelector(`[data-producto-id="${productoId}"]`).remove();
+                    if (productoElement) {
+                        productoElement.remove();
+                        recalcularTotal();
+                    }
                 }
             });
+        }
+        function recalcularTotal() {
+            fetch('/ver_carrito/')
+                .then(response => response.json())
+                .then(data => {
+                    var total = 0;
+                    for (var productoId in data) {
+                        var producto = data[productoId];
+                        total += producto.precio * producto.cantidad;
+                    }
+                    document.getElementById('total').innerHTML = `<h6>Total: $${total}</h6>`;
+                })
+                .catch(error => console.error('Error al obtener el carrito:', error));
         }
     </script>
     

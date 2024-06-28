@@ -102,18 +102,7 @@ def crud(request):
     }
     return render(request, )
 
-def agregarPlato(request):
-    if request.method == 'POST':
-        nombre = request.POST['nombre']
-        precio = request.POST['precio']
-        descripcion = request.POST['descripcion']
-        ingredientes = request.POST['ingredientes']
-        imagen = request.POST['imagen']
-        plato = Producto.objects.create(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
-        plato.save()
-        return render(request, 'pages/adminViews/AgregarPlato.html')    
-    else:
-        return render(request, 'pages/adminViews/AgregarPlato.html')    
+  
     
 def agregar_al_carrito(request, producto_id):
     carrito = request.session.get('carrito', {})
