@@ -10,6 +10,8 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length = 50)
     ingredientes = models.CharField(max_length = 80)
     imagen = models.CharField(max_length=300)
+    def __str__(self):
+        return str(self.nombre)
     
 class Genero(models.Model):
     id_genero = models.AutoField(primary_key=True,db_column="idGenero")
