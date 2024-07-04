@@ -38,7 +38,7 @@ def register(request):
 
         if Usuario.objects.filter(email=email).exists():
             messages.info(request,'El correo ya existe')
-            return redirect('register')
+            return redirect('Register')
         else:
 
             usuario = Usuario.objects.create(
@@ -55,7 +55,7 @@ def register(request):
                 contraseña = contraseña
             )
             usuario.save()
-            return redirect('login')
+            return redirect('Login')
 
     else:
         return render(request, 'pages/Register.html')   
