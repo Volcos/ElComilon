@@ -40,7 +40,6 @@ def register(request):
             messages.info(request,'El correo ya existe')
             return redirect('Register')
         else:
-
             usuario = Usuario.objects.create(
                 nombre = nombre,
                 apellido = apellido,
@@ -56,25 +55,27 @@ def register(request):
             )
             usuario.save()
             return redirect('Login')
-
     else:
         return render(request, 'pages/Register.html')   
 
-def login(request):
+def user_login(request):
     if request.method == 'POST':
         email = request.POST['correoP']
         contraseña = request.POST['contraseña']
         user = authenticate(request,email=email, contraseña=contraseña)
         if user is not None:
             login(request,user)
-            usuario = Usuario.objects.all()
+            usuarios = Usuario.objects.all()
             context = {
-                "Usuarios":usuario,
+                "usuarios":usuarios,
             }
             return render(request,"pages/index.html",context)
         else:
-            messages.info(request,'Credenciales incorrectas')
-            return render(request,'pages/Login.html')             
+            context = {
+                "mensaje":"Usuario o contraseña incorrectos",
+                "design":"alert alert-danger w-50 mx-auto text-center",
+            }
+            return render(request,"pages/Login.html",context)
     else:
         context = {
                                         
