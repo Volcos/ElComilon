@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth.models import User,auth
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import redirect
 from .models import Producto,Usuario,Genero
@@ -23,7 +25,7 @@ def register(request):
     elif request.method == 'POST':
         nombre = request.POST['nombre']
         apellido = request.POST['apellido']
-        email = request.POST['correoP']
+        email = request.POST.get('correoP', '')
         fecha_nacimiento = request.POST['fecnac']
         genero = request.POST['genero']
         telefono = request.POST['numtelef']
@@ -31,7 +33,7 @@ def register(request):
         comuna = request.POST['optComuna']
         direccion = request.POST['direccion']
         numero_direccion = request.POST['numDir']
-        contraseña = request.POST['contraseña']
+        contraseña = request.POST.get('contraseña', '')
         objGenero = Genero.objects.get(id_genero=genero)
 
         if Usuario.objects.filter(email=email).exists():
@@ -54,12 +56,31 @@ def register(request):
             )
             usuario.save()
             return redirect('login')
+
     else:
         return render(request, 'pages/Register.html')   
 
 def login(request):
-    return render(request, 'pages/Login.html')
-    
+    if request.method == 'POST':
+        email = request.POST['correoP']
+        contraseña = request.POST['contraseña']
+        user = authenticate(request,email=email, contraseña=contraseña)
+        if user is not None:
+            login(request,user)
+            usuario = Usuario.objects.all()
+            context = {
+                "Usuarios":usuario,
+            }
+            return render(request,"pages/index.html",context)
+        else:
+            messages.info(request,'Credenciales incorrectas')
+            return render(request,'pages/Login.html')             
+    else:
+        context = {
+                                        
+        }
+        return render(request,"pages/Login.html",context)
+
 def detalleCompra(request):
     return render(request, 'pages/Detail.html')
 

@@ -39,7 +39,7 @@ class Usuario(models.Model):
     id_usuario = models.IntegerField(primary_key=True)
     nombre = models.CharField(max_length = 30)
     apellido = models.CharField(max_length = 30)
-    email = models.EmailField(max_length=100, unique=True, blank=True)
+    email = models.EmailField(max_length=100, blank=True)
     fecha_nacimiento = models.DateField()
     id_genero = models.ForeignKey(
         "Genero", on_delete=models.CASCADE,db_column="idGenero"
