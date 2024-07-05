@@ -112,8 +112,9 @@ def detalleCompra(request):
 def Profile(request):
     if request.user.is_authenticated:
         user = Usuario.objects.get(email=request.user.email)
+        
         context = {
-            "usuario":user
+            "usuario":user,
         }
         
         return render(request, 'pages/Profile.html',context)
