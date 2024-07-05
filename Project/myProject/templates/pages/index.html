@@ -23,7 +23,7 @@
             CARRUSEL --------------------------------------------------------------------------------------------
         -->
         <br>
-        {% if request.Users.username != "admin" %}
+        {% if request.Users.username == "admin" %}
             <div class="agregarOferta">
                 <a href="{% url 'AgregarPlato' %}">
                     <img src="{% static 'img/botones/add.png' %}" alt="" width="30px">
