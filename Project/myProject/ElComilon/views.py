@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import redirect
 from .models import Producto,Usuario,Genero
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 # Create your views here.
@@ -109,6 +110,8 @@ def desconectar(request):
 def detalleCompra(request):
     return render(request, 'pages/Detail.html')
 
+
+@login_required(login_url="Login")
 def Profile(request):
     if request.user.is_authenticated:
         user = Usuario.objects.get(email=request.user.email)
@@ -136,11 +139,12 @@ def detailProduct(request,pk):
 def OrderTracking(request):
     return render(request, 'pages/OrderTracking.html')
 
-
+@staff_member_required(login_url="Login")
 def adminIndex(request):
     productos = Producto.objects.all()
     return render(request, 'pages/adminViews/AdminIndex.html', {'productos':productos})
 
+@staff_member_required(login_url="Login")
 def agregarPlato(request):
     if request.method == 'POST':
         nombre = request.POST['nombre']
@@ -155,15 +159,6 @@ def agregarPlato(request):
         return render(request, 'pages/adminViews/AgregarPlato.html')    
     
 
-def crud(request):
-    usuarios = Usuario.object.all()
-    context = {
-        "usuarios": usuarios,
-    }
-    return render(request, )
-
-  
-    
 def agregar_al_carrito(request, producto_id):
     carrito = request.session.get('carrito', {})
     producto = get_object_or_404(Producto, id_producto=producto_id)
