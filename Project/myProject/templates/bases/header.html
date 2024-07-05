@@ -1,9 +1,7 @@
 {% load static %}
 <header>
     <div class="barra">
-        <div>
-            <a href="{% url 'Profile' %}">ESTO ES UN BOTON DE ENLACE</a>
-        </div>
+        
         <div class="item i1">
             <div class="icono">
                 <a href="{% url 'index' %}">
@@ -19,12 +17,21 @@
             </div>
         </div>
         <div class="item i3">
-            <div class="boton ingreso">
-                <a href="{% url 'Login' %}" >Ingreso</a>
-            </div>
-            <div class="boton registro">
-                <a href="{% url 'Register' %}">Registro</a>
-            </div>
+            {% if request.user.username != ""  %}
+                <div>
+                    <a href="{% url 'Profile' %}">
+                        <img src="{% static 'img/iconos/usuario (1).png' %}" alt="" width="25" style="margin-left: 4.5px;">
+                    </a>
+                </div>
+            {% else %}
+                <div class="boton ingreso">
+                    <a href="{% url 'Login' %}" >Ingreso</a>
+                </div>
+                <div class="boton registro">
+                    <a href="{% url 'Register' %}">Registro</a>
+                </div>
+            {% endif%}
+            
             <div class="boton carrito perfil">
                 <button style="background-color: rgba(240, 248, 255, 0);border: 0;" onclick="popup()" type="button"><img src="{% static 'img/iconos/usuario (1).png' %}" alt="" width="25" style="margin-left: 4.5px;"></button>
             </div>
