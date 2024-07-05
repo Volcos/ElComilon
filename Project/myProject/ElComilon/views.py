@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.http import JsonResponse
-from django.contrib.auth.models import User,auth
+from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -53,6 +53,12 @@ def register(request):
                 numero_direccion = numero_direccion,
                 contraseña = contraseña
             )
+            user = User.objects.create(
+                username = nombre,
+                email = email,
+            )
+            user.set_password(contraseña)
+            user.save()
             usuario.save()
             return redirect('Login')
     else:
@@ -62,12 +68,15 @@ def user_login(request):
     if request.method == 'POST':
         email = request.POST['correoP']
         contraseña = request.POST['contraseña']
-        user = authenticate(request,email=email, contraseña=contraseña)
+        user = auth.authenticate(username=email, password=contraseña)
         if user is not None:
-            login(request,user)
+            auth.login(request,user)
             usuarios = Usuario.objects.all()
+            productos = Producto.objects.all()
+
             context = {
                 "usuarios":usuarios,
+                'productos':productos
             }
             return render(request,"pages/index.html",context)
         else:

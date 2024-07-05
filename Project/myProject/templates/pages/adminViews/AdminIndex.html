@@ -24,12 +24,17 @@
         -->
         <br><br><br><br>
         <div class="oferta_txt">
+            {% if user == "admin" %}
             <div class="agregarOferta">
                 <a href="{% url 'AgregarPlato' %}">
                     <img src="{% static 'img/botones/add.png' %}" alt="" width="30px">
                     <h5>Agregar Oferta</h5>
                 </a>
             </div>
+          {% else %}
+          <h1>Bienvenido Invitado</h1>
+          {% endif%}
+            
         </div>
         <br>
         <div id="carouselExample1" class="carousel slide">
