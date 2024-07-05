@@ -73,10 +73,13 @@ def user_login(request):
             auth.login(request,user)
             usuarios = Usuario.objects.all()
             productos = Producto.objects.all()
-
+            for usuario in usuarios:
+                if usuario.email == user.username:
+                    dataUser = usuario
             context = {
-                "usuarios":usuarios,
-                'productos':productos
+                "usuarios":dataUser,
+                'productos':productos,
+                "user":user
             }
             return render(request,"pages/index.html",context)
         else:
@@ -95,7 +98,15 @@ def detalleCompra(request):
     return render(request, 'pages/Detail.html')
 
 def Profile(request):
-    return render(request, 'pages/Profile.html')
+    if request.user.is_authenticated:
+        user = Usuario.objects.get(email=request.user.email)
+        context = {
+            "usuario":usuario
+        }
+        
+        return render(request, 'pages/Profile.html',context)
+    else:
+        return render(request,"pages/index.html")
 
 def detailProduct(request,pk):
     plato = Producto.objects.get(id_producto=pk)

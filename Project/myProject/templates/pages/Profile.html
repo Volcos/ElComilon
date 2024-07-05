@@ -27,7 +27,7 @@
                             <div class="card-body">
                                 <img src="{% static 'img/iconos/profile.png' %}" class="rounded" width="100">
                                 <div class="mt-3">
-                                    <h3>Benjamín Vargas</h3>
+                                    <h3>{{usuarios.nombre}}</h3>
                                         <button onclick="CambiarVista()"  id="Datos">Datos</button>
                                         <button onclick="CambiarVista()" id="Historial">Historial de Pedidos</button>
                                         <a href="{% url 'OrderTracking' %}">Registro</a>

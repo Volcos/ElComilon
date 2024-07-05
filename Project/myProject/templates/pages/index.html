@@ -23,16 +23,7 @@
             CARRUSEL --------------------------------------------------------------------------------------------
         -->
         <br>
-        {% if request.Users.username == "admin" %}
-            <div class="agregarOferta">
-                <a href="{% url 'AgregarPlato' %}">
-                    <img src="{% static 'img/botones/add.png' %}" alt="" width="30px">
-                    <h5>Agregar Oferta</h5>
-                </a>
-            </div>
-          {% else %}
-          <h1></h1>
-          {% endif%}
+        
         <div id="carouselExample1" class="carousel slide">
             <div class="carousel-inner">
               <div class="carousel-item active">
@@ -182,6 +173,17 @@
         <div class="restaurantes_txt">
         <h1>PLATOS</h1>
         </div>
+        <h1>Hola {{usuarios.direccion}}</h1>
+        {% if request.user.username == "admin" %}
+            <div class="agregarOferta">
+                <a href="{% url 'AgregarPlato' %}">
+                    <img src="{% static 'img/botones/add.png' %}" alt="" width="30px">
+                    <h5>Agregar Plato</h5>
+                </a>
+            </div>
+        {% else %}
+            <h1></h1>
+        {% endif%}
         <HR></HR>
           <div class="platos">
              <div class="element butt l" id="Lbutton">
