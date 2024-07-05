@@ -54,8 +54,8 @@ def register(request):
                 contraseña = contraseña
             )
             user = User.objects.create(
-                username = nombre,
-                email = email,
+                username = email,
+                email = email
             )
             user.set_password(contraseña)
             user.save()

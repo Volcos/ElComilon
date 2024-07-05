@@ -19,21 +19,7 @@ class Genero(models.Model):
 
     def __str__(self):
         return str(self.genero)
-""""
-class Region(models.Model):
-    id_region = models.AutoField(primary_key=True,db_column="idRegion")
-    region = models.CharField(max_length=40, blank=False,null = False)
 
-    def __str__(self):
-        return str(self.region)
-
-class Comuna(models.Model):
-    id_comuna = models.AutoField(primary_key=True,db_column="idComuna")
-    comuna = models.CharField(max_length=40, blank=False,null = False)
-
-    def __str__(self):
-        return str(self.comuna)
-"""
 
 class Usuario(models.Model):
     id_usuario = models.IntegerField(primary_key=True)
