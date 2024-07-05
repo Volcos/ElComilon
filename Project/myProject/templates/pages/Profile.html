@@ -14,13 +14,20 @@
 <body>
     {% include 'bases/header.html' %}
     <main>
+                    
         <div class="container mb-5 pt-5">
             <div class="row pt-5 mx-auto">
                 <div class="topbar">
-                    <a href="">Cerrar sesión</a>
+                    {% if request.user.is_authenticated %}
+                    <a href=" {% url 'logout' %} ">Cerrar sesión</a>
+                    {% else%}
+                    {% endif %}
                     <a href="">Soporte</a>
                     <a href=""></a>
+                    
+                    
                 </div>
+                    
                 <div class="row">
                     <div class="col-md-4 mt-1">
                         <div class="card text-center sidebar" id="lateral">

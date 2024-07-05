@@ -94,6 +94,18 @@ def user_login(request):
         }
         return render(request,"pages/Login.html",context)
 
+def desconectar(request):   
+    if request.user.is_authenticated:
+        logout(request)
+    
+    context = {
+        "mensaje":"Desconectado con exito",
+        "design":"alert alert-success w-50 mx-auto text-center",
+    }
+    return render(request,"pages/Login.html",context)
+
+
+
 def detalleCompra(request):
     return render(request, 'pages/Detail.html')
 
@@ -107,6 +119,11 @@ def Profile(request):
         return render(request, 'pages/Profile.html',context)
     else:
         return render(request,"pages/index.html")
+
+
+
+
+
 
 def detailProduct(request,pk):
     plato = Producto.objects.get(id_producto=pk)
