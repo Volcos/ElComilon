@@ -18,7 +18,7 @@
         </div>
         <div class="item i3">
             {% if request.user.username != ""  %}
-                <div>
+                <div class="boton carrito profile">
                     <a href="{% url 'Profile' %}">
                         <img src="{% static 'img/iconos/usuario (1).png' %}" alt="" width="25" style="margin-left: 4.5px;">
                     </a>
@@ -30,11 +30,12 @@
                 <div class="boton registro">
                     <a href="{% url 'Register' %}">Registro</a>
                 </div>
+                <div class="boton carrito perfil">
+                    <button style="background-color: rgba(240, 248, 255, 0);border: 0;" onclick="popup()" type="button"><img src="{% static 'img/iconos/usuario (1).png' %}" alt="" width="25" style="margin-left: 4.5px;"></button>
+                </div>
             {% endif%}
             
-            <div class="boton carrito perfil">
-                <button style="background-color: rgba(240, 248, 255, 0);border: 0;" onclick="popup()" type="button"><img src="{% static 'img/iconos/usuario (1).png' %}" alt="" width="25" style="margin-left: 4.5px;"></button>
-            </div>
+            
             
             <div class="boton carrito">
                 <button style="background-color: rgba(240, 248, 255, 0);border: 0;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img src="{% static 'img/iconos/img_carro.png' %}" alt="" width="30px"></button>
