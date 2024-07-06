@@ -19,3 +19,9 @@ urlpatterns = [
     path('eliminar_del_carrito/<int:producto_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
     path('logout',views.desconectar,name='logout'),
 ]
+
+
+#------------------------------------------------------ IMPORTANTE ----------------------------------------------#
+#datos de login de admin
+#username: be.vargast@duocuc.cl
+#contraseña: admin

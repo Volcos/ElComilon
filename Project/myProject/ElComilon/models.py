@@ -44,3 +44,7 @@ class Usuario(models.Model):
         + str(self.apellido)
         )
 
+#------------------------------------------------------ IMPORTANTE ----------------------------------------------#
+#datos de login de admin
+#username: be.vargast@duocuc.cl
+#contraseña: admin
