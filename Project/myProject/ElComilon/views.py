@@ -130,6 +130,7 @@ def Profile(request):
 
 
 def detailProduct(request,pk):
+
     plato = Producto.objects.get(id_producto=pk)
     context = {
         "plato":plato
@@ -158,7 +159,48 @@ def agregarPlato(request):
     else:
         return render(request, 'pages/adminViews/AgregarPlato.html')    
     
+def eliminarPlato(request,pk):
+    try:
+        plato = Producto.objects.get(id_producto=pk)
+        plato.delete()
+        platos = Producto.objects.all()
+        context = {
+            "mensaje":"Plato eliminado",
+            "productos": platos
+        }
+        return render(request,'pages/index.html',context)
+    except:
+        context = {
+            "mensaje":"Error al eliminar el plato"
+        }
+        return render(request,'pages/index.html',context)
 
+def modificarPlato(request,pk):
+    if request.method == 'POST':
+        nombre = request.POST['nombre']
+        precio = request.POST['precio']
+        descripcion = request.POST['descripcion']
+        ingredientes = request.POST['ingredientes']
+        imagen = request.POST['imagen']
+        plato = Producto(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
+        plato.save()
+        Oldplato = Producto.objects.get(id_producto=pk)
+        Oldplato.delete()
+        platos = Producto.objects.all()
+        context = {
+            "mensaje":"Plato eliminado",
+            "productos": platos
+        }
+        return render(request, 'pages/index.html',context)    
+    else:
+        return render(request, 'pages/adminViews/modificarPlato.html')
+
+def buscarPlatoEdit(request,pk):
+    plato = Producto.objects.get(id_producto=pk)
+    context = {
+        "plato":plato
+    }
+    return render(request,'pages/adminViews/modificarPlato.html',context)
 def agregar_al_carrito(request, producto_id):
     carrito = request.session.get('carrito', {})
     producto = get_object_or_404(Producto, id_producto=producto_id)

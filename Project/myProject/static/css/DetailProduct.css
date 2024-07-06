@@ -152,5 +152,26 @@ hr {
 .Pago{
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items:self-end;
+}
+.botones-admin{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.eliminar{
+    display: flex;
+    justify-content: flex-end;
+    width: 120px;
+}
+.eliminar button{
+    background-color: #EFAB52;
+    border-color: transparent;
+    border-radius: 10px;
+    
+}
+.eliminar button a{
+    color: #FFFFFF;
+    text-decoration: none;
 }

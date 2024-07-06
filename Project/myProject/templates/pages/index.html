@@ -173,8 +173,7 @@
         <div class="restaurantes_txt">
         <h1>PLATOS</h1>
         </div>
-        <h1>Hola {{usuarios.direccion}}</h1>
-        {% if request.user.username == "admin" %}
+        {% if request.user.username == "be.vargast@duocuc.cl" %}
             <div class="agregarOferta">
                 <a href="{% url 'AgregarPlato' %}">
                     <img src="{% static 'img/botones/add.png' %}" alt="" width="30px">

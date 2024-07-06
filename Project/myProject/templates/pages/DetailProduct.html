@@ -19,48 +19,66 @@
 <main>
     
     <div id="Con">
-        <div class="Contenedor">
-            <div class="PlatoPrincipal">
-                <a href=". ."></a>
-                <img src="{% static 'img/platos/Fideos.png' %}" alt="Primer Producto" width="100%" height="200px" >
-              </div>
-              <div class="NomProducto">
-                <h5>{{plato.nombre}}</h5>
-              </div>
-              <div class="Descripcion">
-                <h6>{{plato.descripcion}}</h6>
-              </div>
-              <div class="CantidadCom">
-                <h6>Cantidad</h6>
-              </div>
-              <div class="Linea1">     
-                <select class="Cantidad" >
-                  <option value="number">1</option>
-                  <option value="number">2</option>
-                  <option value="number">3</option>
-                  <option value="number">4</option>
-                  <option value="number">5</option>
-                  <option value="number">6</option>
-                  <option value="number">7</option>
-                  <option value="number">8</option>
-                  <option value="number">9</option>
-                  <option value="number">10</option>
-                </select>
-              </div>
-              <div class="Ingredientes">
-                <h5>Agregar Ingredientes</h5>
-              </div>
-              <div class="Pago">
-                <div class="SeguirCompra" id="agregar">
-                  <button class="agregar-producto" data-product-id="{{ plato.id_producto }}" id>Agregar y seguir comprando</button>
-                </div>
-                <div class="Pagar">
-                  <div>
-                      <button  class="btn" style="float: right;" ><a href="Detail.html">Pagar ahora &middot; {{plato.precio}} </a></button>
-                  </div>     
-                </div> 
-              </div>
+      {% if request.user.username == "be.vargast@duocuc.cl"  %}
+      <div class="botones-admin">
+        <div class="eliminar">
+          <button>
+            <a href="{% url 'eliminarPlato' pk=plato.id_producto %}">
+              Eliminar Plato
+            </a>
+          </button>
         </div>
+        <div class="eliminar">
+          <button>
+            <a href="{% url 'buscarPlatoEdit' pk=plato.id_producto %}">
+              Modificar Plato
+            </a>
+          </button>
+        </div>
+      </div>
+      {% endif %}
+      <div class="Contenedor">
+          <div class="PlatoPrincipal">
+              <a href=". ."></a>
+              <img src="{% static 'img/platos/Fideos.png' %}" alt="Primer Producto" width="100%" height="200px" >
+            </div>
+            <div class="NomProducto">
+              <h5>{{plato.nombre}}</h5>
+            </div>
+            <div class="Descripcion">
+              <h6>{{plato.descripcion}}</h6>
+            </div>
+            <div class="CantidadCom">
+              <h6>Cantidad</h6>
+            </div>
+            <div class="Linea1">     
+              <select class="Cantidad" >
+                <option value="number">1</option>
+                <option value="number">2</option>
+                <option value="number">3</option>
+                <option value="number">4</option>
+                <option value="number">5</option>
+                <option value="number">6</option>
+                <option value="number">7</option>
+                <option value="number">8</option>
+                <option value="number">9</option>
+                <option value="number">10</option>
+              </select>
+            </div>
+            <div class="Ingredientes">
+              <h5>Agregar Ingredientes</h5>
+            </div>
+            <div class="Pago">
+              <div class="SeguirCompra" id="agregar">
+                <button class="agregar-producto" data-product-id="{{ plato.id_producto }}" id>Agregar y seguir comprando</button>
+              </div>
+              <div class="Pagar">
+                <div>
+                    <button  class="btn" style="float: right;" ><a href="Detail.html">Pagar ahora &middot; {{plato.precio}} </a></button>
+                </div>     
+              </div> 
+            </div>
+      </div>
     </div>
 </main>
     {% include 'bases/footer.html' %}
