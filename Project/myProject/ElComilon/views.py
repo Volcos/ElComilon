@@ -10,6 +10,11 @@ from .models import Producto,Usuario,Genero
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.files.storage import FileSystemStorage
 
+#------------------------------------------------------ IMPORTANTE ----------------------------------------------#
+#datos de login de admin
+#username: be.vargast@duocuc.cl
+#contraseña: admin
+
 
 # Create your views here.
 def index(request):
@@ -65,6 +70,11 @@ def register(request):
             return redirect('Login')
     else:
         return render(request, 'pages/Register.html')   
+
+
+#datos de login de admin
+#username: be.vargast@duocuc.cl
+#contraseña: admin
 
 def user_login(request):
     if request.method == 'POST':
@@ -126,7 +136,9 @@ def Profile(request):
         return render(request,"pages/index.html")
 
 
-
+#datos de login de admin
+#username: be.vargast@duocuc.cl
+#contraseña: admin
 
 
 
@@ -160,7 +172,12 @@ def agregarPlato(request):
             return render(request, 'pages/adminViews/AgregarPlato.html')    
     else:
         return render(request, 'pages/adminViews/AgregarPlato.html')    
-    
+
+
+#datos de login de admin
+#username: be.vargast@duocuc.cl
+#contraseña: admin
+
 def eliminarPlato(request,pk):
     try:
         plato = Producto.objects.get(id_producto=pk)
@@ -176,7 +193,8 @@ def eliminarPlato(request,pk):
             "mensaje":"Error al eliminar el plato"
         }
         return render(request,'pages/index.html',context)
-
+    
+@staff_member_required(login_url="Login")
 def modificarPlato(request,pk):
     if request.method == 'POST':
         nombre = request.POST['nombre']
@@ -196,13 +214,15 @@ def modificarPlato(request,pk):
         return render(request, 'pages/index.html',context)    
     else:
         return render(request, 'pages/adminViews/modificarPlato.html')
-
+    
+@staff_member_required(login_url="Login")
 def buscarPlatoEdit(request,pk):
     plato = Producto.objects.get(id_producto=pk)
     context = {
         "plato":plato
     }
     return render(request,'pages/adminViews/modificarPlato.html',context)
+
 def agregar_al_carrito(request, producto_id):
     carrito = request.session.get('carrito', {})
     producto = get_object_or_404(Producto, id_producto=producto_id)
@@ -230,3 +250,8 @@ def eliminar_del_carrito(request, producto_id):
         del carrito[str(producto_id)]
         request.session['carrito'] = carrito
     return JsonResponse({'success': True})
+
+
+#datos de login de admin
+#username: be.vargast@duocuc.cl
+#contraseña: admin
