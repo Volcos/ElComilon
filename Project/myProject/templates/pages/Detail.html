@@ -50,7 +50,7 @@
                             productoElement.innerHTML = `
                                 <div data-producto-id="${productoId}" class="plato-compra">
                                     <div class="imagen">
-                                        <img src="{% static 'img/DefaultImage.jpg' %}" alt="Primer Producto" width="60px" >
+                                        <img src="${producto.imagen}" alt="Primer Producto" width="60px" >
                                     </div>
                                     <div class="nombre">
                                         <p>${producto.nombre}</p>

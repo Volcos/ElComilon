@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from .models import Producto,Usuario,Genero
 from django.contrib.admin.views.decorators import staff_member_required
+from django.core.files.storage import FileSystemStorage
 
 
 # Create your views here.
@@ -152,10 +153,11 @@ def agregarPlato(request):
         precio = request.POST['precio']
         descripcion = request.POST['descripcion']
         ingredientes = request.POST['ingredientes']
-        imagen = request.POST['imagen']
-        plato = Producto.objects.create(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
-        plato.save()
-        return render(request, 'pages/adminViews/AgregarPlato.html')    
+        if request.FILES['imagen']:
+            imagen = request.FILES['imagen']
+            plato = Producto.objects.create(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
+            plato.save()
+            return render(request, 'pages/adminViews/AgregarPlato.html')    
     else:
         return render(request, 'pages/adminViews/AgregarPlato.html')    
     
@@ -212,7 +214,7 @@ def agregar_al_carrito(request, producto_id):
             'precio': producto.precio,
             'descripcion': producto.descripcion,
             'ingredientes': producto.ingredientes,
-            'imagen': producto.imagen,
+            'imagen': producto.imagen.url,
             'cantidad': 1
         }
     request.session['carrito'] = carrito

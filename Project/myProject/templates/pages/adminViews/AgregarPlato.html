@@ -16,7 +16,7 @@
         <div class="espacio">
             <div class="contenedor">
                 <h3>AGREGAR UN PLATO</h3>
-                <form action="" name="formulario" id="formulario" method="post">
+                <form action="" name="formulario" id="formulario" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="casilla nombreProducto">
                         <div class="form-floating Nombre">
@@ -44,7 +44,7 @@
                     </div>
                     <div class="casilla imagen">
                         <div class="form-floating Imagen">
-                            <input type="text" class="form-control" name="imagen" id="ingredientes">
+                            <input type="file" class="form-control" name="imagen" id="ingredientes" accept="image/*">
                             <label for="imagen">Imagen</label>
                         </div>
                     </div>

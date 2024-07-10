@@ -9,7 +9,7 @@ class Producto(models.Model):
     precio = models.IntegerField()
     descripcion = models.CharField(max_length = 50)
     ingredientes = models.CharField(max_length = 80)
-    imagen = models.CharField(max_length=300)
+    imagen = models.ImageField(upload_to='upload/')
     def __str__(self):
         return str(self.nombre)+" "+str(self.id_producto)
     
