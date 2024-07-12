@@ -12,7 +12,18 @@ class Producto(models.Model):
     imagen = models.ImageField(upload_to='upload/')
     def __str__(self):
         return str(self.nombre)+" "+str(self.id_producto)
-    
+
+class Compra(models.Model):
+    id_compra =models.AutoField(primary_key=True)
+    correo_cliente = models.CharField(max_length=100)
+    fecha_compra = models.DateField()
+
+class DetalleCompra(models.Model):
+    id_compra = models.ForeignKey(
+        "Compra", on_delete=models.CASCADE, db_column="id_compra"
+    )
+    producto = models.CharField(max_length=80)
+
 class Genero(models.Model):
     id_genero = models.AutoField(primary_key=True,db_column="idGenero")
     genero = models.CharField(max_length=25, blank=False,null = False)
