@@ -20,6 +20,7 @@ urlpatterns = [
     path('ver_carrito/', views.ver_carrito, name='ver_carrito'),
     path('eliminar_del_carrito/<int:producto_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
     path('logout',views.desconectar,name='logout'),
+    path('GuardarCompra',views.guardarCompra,name='GuardarCompra'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

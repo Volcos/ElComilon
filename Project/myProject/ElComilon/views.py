@@ -6,9 +6,12 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import redirect
-from .models import Producto,Usuario,Genero
+from .models import Producto,Usuario,Genero, Compra, DetalleCompra
 from django.contrib.admin.views.decorators import staff_member_required
 from django.core.files.storage import FileSystemStorage
+from django.utils import timezone
+from django.conf import settings
+import os
 
 #------------------------------------------------------ IMPORTANTE ----------------------------------------------#
 #datos de login de admin
@@ -196,16 +199,25 @@ def eliminarPlato(request,pk):
     
 @staff_member_required(login_url="Login")
 def modificarPlato(request,pk):
+    plato = get_object_or_404(Producto, id_producto=pk)
+    
     if request.method == 'POST':
         nombre = request.POST['nombre']
         precio = request.POST['precio']
         descripcion = request.POST['descripcion']
         ingredientes = request.POST['ingredientes']
-        imagen = request.POST['imagen']
-        plato = Producto(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
+        
+        plato.nombre = nombre
+        plato.precio = precio
+        plato.descripcion = descripcion
+        plato.ingredientes = ingredientes
+        
+        if 'imagen' in request.FILES:
+            imagen = request.FILES['imagen']
+            plato.imagen = imagen
         plato.save()
-        Oldplato = Producto.objects.get(id_producto=pk)
-        Oldplato.delete()
+
+       
         platos = Producto.objects.all()
         context = {
             "mensaje":"Plato eliminado",
@@ -251,6 +263,30 @@ def eliminar_del_carrito(request, producto_id):
         request.session['carrito'] = carrito
     return JsonResponse({'success': True})
 
+def guardarCompra(request):
+    carrito = request.session.get('carrito', {})
+    if request.user.username:
+        email = request.user.email
+        fecha = timezone.now()
+        total_compra = 0
+        for tmp in carrito.values():
+            total_compra += tmp['precio'] * tmp['cantidad']
+        compra = Compra.objects.create(
+            correo_cliente=email,
+            fecha_compra=fecha,
+            total_compra=total_compra
+        )
+        for item in carrito.values():
+            DetalleCompra.objects.create(
+                id_compra=compra,
+                producto=item['nombre'],
+                cantidad=item['cantidad'],
+                precio=item['precio']
+            )
+        request.session['carrito'] = {}
+        return redirect('index')  
+    else:
+        return redirect('Login')
 
 #datos de login de admin
 #username: be.vargast@duocuc.cl
