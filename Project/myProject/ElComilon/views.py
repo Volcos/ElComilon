@@ -279,27 +279,20 @@ def guardarCompra(request):
         return redirect('Login')
 
 def get_profile_data(request):
-    if request.user.is_authenticated:
-        user = Usuario.objects.get(email=request.user.email)
-        usuario = {
-            "nombre": user.nombre,
-            "apellido": user.apellido,
-            "email": user.email,
-            "fecha_nacimiento": user.fecha_nacimiento,
-            "genero": user.id_genero,
-            "telefono": user.telefono,
-            "region": user.region,
-            "comuna": user.comuna,
-            "direccion": user.direccion,
-            "numero_direccion": user.numero_direccion,
-            "contraseña": user.contraseña
-        }
-                
-        context = {
-            "usuario": usuario,
-        }
-                
-        return JsonResponse(context)
-    else:
-        return JsonResponse({"error": "Usuario no autenticado"})
+    user = Usuario.objects.get(email=request.user.email)
+    usuario = {
+        "nombre": user.nombre,
+        "apellido": user.apellido,
+        "email": user.email,
+        "fecha_nacimiento": user.fecha_nacimiento,
+        "genero": user.id_genero.genero,
+        "telefono": user.telefono,
+        "region": user.region,
+        "comuna": user.comuna,
+        "direccion": user.direccion,
+        "numero_direccion": user.numero_direccion,
+        "contraseña": user.contraseña
+    }
+
+    return JsonResponse(usuario)
     

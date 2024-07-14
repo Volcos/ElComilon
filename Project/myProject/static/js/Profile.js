@@ -16,7 +16,7 @@ function CambiarVista(){
         let button2 = document.getElementById("Historial");
      
             button1.addEventListener("click", function() {
-                    fetch("/get_profile_data") 
+                    fetch(`/get_profile_data/`) 
                         .then(response => response.json())
                         .then(data => {
                             // Update the cardbody with the fetched user data
@@ -27,6 +27,7 @@ function CambiarVista(){
                                     </div>
                                     <div class="col-md-9 text-secondary">
                                         ${data.nombre} ${data.apellido}
+                                        
                                     </div>
                                 </div>
                                 <hr>

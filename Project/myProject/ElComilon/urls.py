@@ -21,6 +21,7 @@ urlpatterns = [
     path('eliminar_del_carrito/<int:producto_id>/', views.eliminar_del_carrito, name='eliminar_del_carrito'),
     path('logout',views.desconectar,name='logout'),
     path('GuardarCompra',views.guardarCompra,name='GuardarCompra'),
+    path('get_profile_data/',views.get_profile_data,name='get_profile_data')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
