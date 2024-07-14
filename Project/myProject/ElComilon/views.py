@@ -295,4 +295,15 @@ def get_profile_data(request):
     }
 
     return JsonResponse(usuario)
-    
+
+def get_order_data(request):
+    compras = Compra.objects.get(correo_cliente=request.user.email)
+    historial = {
+        "id_compra": compras.id_compra,
+        "correo_cliente": compras.correo_cliente,
+        "fecha_compra": compras.fecha_compra,
+        "total_compra": compras.total_compra
+
+    }
+
+    return JsonResponse(historial)
