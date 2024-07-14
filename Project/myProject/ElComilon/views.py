@@ -2,13 +2,12 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.contrib.auth.models import User, auth
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.shortcuts import redirect
 from .models import Producto,Usuario,Genero, Compra, DetalleCompra
 from django.contrib.admin.views.decorators import staff_member_required
-from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
 from django.conf import settings
 import os
@@ -71,13 +70,11 @@ def register(request):
             user.save()
             usuario.save()
             return redirect('Login')
+        
     else:
         return render(request, 'pages/Register.html')   
 
 
-#datos de login de admin
-#username: be.vargast@duocuc.cl
-#contraseña: admin
 
 def user_login(request):
     if request.method == 'POST':
@@ -139,10 +136,6 @@ def Profile(request):
         return render(request,"pages/index.html")
 
 
-#datos de login de admin
-#username: be.vargast@duocuc.cl
-#contraseña: admin
-
 
 
 def detailProduct(request,pk):
@@ -177,10 +170,7 @@ def agregarPlato(request):
         return render(request, 'pages/adminViews/AgregarPlato.html')    
 
 
-#datos de login de admin
-#username: be.vargast@duocuc.cl
-#contraseña: admin
-
+@staff_member_required(login_url="Login")
 def eliminarPlato(request,pk):
     try:
         plato = Producto.objects.get(id_producto=pk)
@@ -288,6 +278,28 @@ def guardarCompra(request):
     else:
         return redirect('Login')
 
-#datos de login de admin
-#username: be.vargast@duocuc.cl
-#contraseña: admin
+def get_profile_data(request):
+    if request.user.is_authenticated:
+        user = Usuario.objects.get(email=request.user.email)
+        usuario = {
+            "nombre": user.nombre,
+            "apellido": user.apellido,
+            "email": user.email,
+            "fecha_nacimiento": user.fecha_nacimiento,
+            "genero": user.id_genero,
+            "telefono": user.telefono,
+            "region": user.region,
+            "comuna": user.comuna,
+            "direccion": user.direccion,
+            "numero_direccion": user.numero_direccion,
+            "contraseña": user.contraseña
+        }
+                
+        context = {
+            "usuario": usuario,
+        }
+                
+        return JsonResponse(context)
+    else:
+        return JsonResponse({"error": "Usuario no autenticado"})
+    

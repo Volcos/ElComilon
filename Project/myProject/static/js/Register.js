@@ -9,19 +9,7 @@ const ValidContraseña = contraseña => {
     return regex.test(contraseña); 
 }   
 
-
-
-
-/*PENDIENTE FORMATO NUMERO */
-function formatPhoneNumber(phoneNumberString) {
-    var cleaned = ('' + phoneNumberString).replace(/\\D/g, '');
-    var match = cleaned.match(/^(\\d{3})(\\d{3})(\\d{4})$/);
-    if (match) {
-      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
-    }
-    return null;
-  }
-
+document.getElementById("submit").disabled = true;
 
 
 function validar(){
@@ -120,6 +108,12 @@ function validar(){
             document.getElementById("Repcontraseña").style.border = "1px solid green"           
         }
         document.getElementById("contraseña").style.border = "1px solid green"
+    }
+    if (nombre !== '' && apellido !== '' && correoP !== '' && fecnac !== '' && numtelef !== '' && direccion !== '' && numDir !== '' && contraseña !== '' && Repcontraseña !== '' && Repcontraseña === contraseña){
+        document.getElementById("submit").disabled = false;
+        document.getElementById("resultado").innerHTML = "<div class='alert alert-success w-50 mx-auto text-center'>" +
+        "Datos Válidos</div>"
+        
     }
 };  
 
