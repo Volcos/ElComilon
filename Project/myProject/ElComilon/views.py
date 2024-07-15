@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.http import JsonResponse
+from django.urls import reverse
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -156,18 +157,27 @@ def adminIndex(request):
 
 @staff_member_required(login_url="Login")
 def agregarPlato(request):
-    if request.method == 'POST':
-        nombre = request.POST['nombre']
-        precio = request.POST['precio']
-        descripcion = request.POST['descripcion']
-        ingredientes = request.POST['ingredientes']
-        if request.FILES['imagen']:
-            imagen = request.FILES['imagen']
-            plato = Producto.objects.create(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
-            plato.save()
-            return render(request, 'pages/adminViews/AgregarPlato.html')    
-    else:
-        return render(request, 'pages/adminViews/AgregarPlato.html')    
+    try:
+        if request.method == 'POST':
+            nombre = request.POST['nombre']
+            precio = request.POST['precio']
+            descripcion = request.POST['descripcion']
+            ingredientes = request.POST['ingredientes']
+            if request.FILES['imagen']:
+                imagen = request.FILES['imagen']
+                plato = Producto.objects.create(nombre = nombre, precio = precio, descripcion = descripcion, ingredientes = ingredientes, imagen = imagen)
+                plato.save()
+                context = {
+                    "mensaje":"Nuevo plato agregado"
+                }
+                return render(request, 'pages/adminViews/AgregarPlato.html',context)    
+        else:
+            return render(request, 'pages/adminViews/AgregarPlato.html')
+    except:
+        context = {
+                "mensaje":"Erorr al agregar plato"
+            }
+        return render(request, 'pages/adminViews/AgregarPlato.html',context) 
 
 
 @staff_member_required(login_url="Login")
@@ -183,7 +193,8 @@ def eliminarPlato(request,pk):
         return render(request,'pages/index.html',context)
     except:
         context = {
-            "mensaje":"Error al eliminar el plato"
+            "mensaje":"Error al eliminar el plato",
+            "productos": platos
         }
         return render(request,'pages/index.html',context)
     
@@ -210,7 +221,7 @@ def modificarPlato(request,pk):
        
         platos = Producto.objects.all()
         context = {
-            "mensaje":"Plato eliminado",
+            "mensaje":"Plato modificado",
             "productos": platos
         }
         return render(request, 'pages/index.html',context)    
@@ -240,7 +251,7 @@ def agregar_al_carrito(request, producto_id):
             'cantidad': 1
         }
     request.session['carrito'] = carrito
-    return redirect('ver_carrito')
+    return JsonResponse({'success':True,'redirect_url': reverse('detalleCompra')})
     
 def ver_carrito(request):
     carrito = request.session.get('carrito', {})

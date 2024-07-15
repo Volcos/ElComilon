@@ -23,7 +23,13 @@
             CARRUSEL --------------------------------------------------------------------------------------------
         -->
         <br>
-        
+        {% if mensaje %}
+        <div class="contenedor_mensaje">
+            <div class="mensaje">
+                <h6>{{mensaje}}</h6>
+            </div>
+        </div>
+        {% endif %}
         <div id="carouselExample1" class="carousel slide">
             <div class="carousel-inner">
               <div class="carousel-item active">

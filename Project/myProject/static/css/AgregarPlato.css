@@ -47,3 +47,19 @@ input[type=number]::-webkit-inner-spin-button {
     padding: 10px;
     font-size: medium;
 }
+.contenedor_mensaje{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.mensaje{
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(123, 245, 119, 0.473);
+    padding: 8px;
+    margin-left: 3rem;
+    border-radius: 10px;
+}
+.mensaje h6{
+    color: rgb(74, 179, 70);
+}

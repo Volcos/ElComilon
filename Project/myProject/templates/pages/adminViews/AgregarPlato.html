@@ -13,6 +13,13 @@
     {% include 'bases/header.html' %}
     <main>
         <br><br><br><br>
+        {% if mensaje %}
+        <div class="contenedor_mensaje">
+            <div class="mensaje">
+                <h6>{{mensaje}}</h6>
+            </div>
+        </div>
+        {% endif %}
         <div class="espacio">
             <div class="contenedor">
                 <h3>AGREGAR UN PLATO</h3>

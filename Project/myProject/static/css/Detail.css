@@ -114,6 +114,10 @@ main{
     margin-left: 70px;
     font-family: 'Ponnala',sans-serif;
 }
+.SeguirCompra .btn a{
+    text-decoration: none;
+    color: #f9f9f9;
+}
 
 .Comprar .btn{
     margin-left: 50px;
@@ -124,7 +128,10 @@ main{
     font-size: 20px;
     font-family: 'Ponnala',sans-serif;
 }
-
+.Comprar .btn a{
+    text-decoration: none;
+    color: #f9f9f9;
+}
 .Plato1 img{
     border: 1px solid #ddd;
     border-radius: 4px;

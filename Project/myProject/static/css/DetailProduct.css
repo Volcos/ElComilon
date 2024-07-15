@@ -1,5 +1,6 @@
 
 main{
+    width: 100%;
     background-color: #f1f1f1;
     display: flex;
     justify-content: center;
@@ -118,8 +119,11 @@ hr {
     height: 50px;
 }
 
-.Pagar .btn{
+.Pagar div .comprar-producto{
     background-color: #D9D9D9;
+    border-color: transparent;
+    border-radius: 10px;
+    padding: 5px;
     display: flex;
     text-align: end;
     align-items: right;
@@ -174,4 +178,21 @@ hr {
 .eliminar button a{
     color: #FFFFFF;
     text-decoration: none;
+}
+
+.contenedor_mensaje{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+.mensaje{
+    position: absolute;
+    z-index: 1;
+    background-color: rgba(123, 245, 119, 0.473);
+    padding: 8px;
+    margin-left: 3rem;
+    border-radius: 10px;
+}
+.mensaje h6{
+    color: rgb(74, 179, 70);
 }
