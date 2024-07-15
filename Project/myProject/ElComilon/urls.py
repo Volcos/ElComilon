@@ -22,7 +22,9 @@ urlpatterns = [
     path('logout',views.desconectar,name='logout'),
     path('GuardarCompra',views.guardarCompra,name='GuardarCompra'),
     path('get_profile_data/',views.get_profile_data,name='get_profile_data'),
-    path('get_order_data/',views.get_order_data,name='get_order_data')
+    path('get_order_data/',views.get_order_data,name='get_order_data'),
+    path('test/',views.test,name="test"),
+    path('compras/',views.compras,name="compras")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

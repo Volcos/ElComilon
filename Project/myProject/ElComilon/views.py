@@ -305,5 +305,11 @@ def get_order_data(request):
         "total_compra": compras.total_compra
 
     }
-
+    print(compras)
     return JsonResponse(historial)
+def test(request):
+    return render(request,'pages/test.html')
+def compras(request):
+    compras = Compra.objects.filter(correo_cliente= request.user.email).values('id_compra', 'correo_cliente', 'fecha_compra', 'total_compra')
+    compras_list = list(compras)
+    return JsonResponse(compras_list)

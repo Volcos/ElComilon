@@ -18,6 +18,8 @@ class Compra(models.Model):
     correo_cliente = models.CharField(max_length=100)
     fecha_compra = models.DateField()
     total_compra = models.IntegerField()
+    def __str__(self):
+        return str(self.correo_cliente)
 
 class DetalleCompra(models.Model):
     id_compra = models.ForeignKey(
