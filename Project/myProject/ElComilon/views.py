@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
-from django.http import JsonResponse
+from django.http import JsonResponse, Http404
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
@@ -135,7 +135,13 @@ def Profile(request):
     else:
         return render(request,"pages/index.html")
 
-
+@login_required(login_url="Login")
+def Profile2(request):
+    if request.user.is_authenticated:
+        compras = Compra.objects.filter(correo_cliente= request.user.email)
+        return render(request,'pages/Profile2.html',{'compras':compras})
+    else:
+        return render(request,"pages/index.html")
 
 
 def detailProduct(request,pk):
@@ -146,8 +152,21 @@ def detailProduct(request,pk):
     }
     return render(request, 'pages/DetailProduct.html',context)
 
+@login_required(login_url="Login")
 def OrderTracking(request):
-    return render(request, 'pages/OrderTracking.html')
+    if 'seguimiento' in request.GET:
+        id_seguimiento = request.GET['seguimiento']
+        try:
+            compra = get_object_or_404(Compra, id_compra=id_seguimiento)
+            return render(request, 'pages/OrderTracking2.html', {'compra': compra})
+        except Http404:
+            return render(request, 'pages/OrderTracking.html', {'error': 'No se encontró ninguna compra con ese ID.'})
+    else:
+        return render(request, 'pages/OrderTracking.html')
+
+@login_required(login_url="Login")
+def OrderTracking2(request):
+    return render(request, 'pages/OrderTracking2.html')
 
 @staff_member_required(login_url="Login")
 def adminIndex(request):
@@ -309,6 +328,7 @@ def get_order_data(request):
     return JsonResponse(historial)
 def test(request):
     return render(request,'pages/test.html')
+
 def compras(request):
     compras = Compra.objects.filter(correo_cliente= request.user.email).values('id_compra', 'correo_cliente', 'fecha_compra', 'total_compra')
     compras_list = list(compras)
